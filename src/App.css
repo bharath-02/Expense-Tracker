@@ -1,0 +1,123 @@
+/* Setting the entire background color */
+body {
+  background-color: #3b3b3b;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for Expense Tracker */
+.expense-tracker-container {
+  padding: 20px;
+  max-width: 1500px;
+}
+
+/* Header */
+.expense-tracker-header {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+/* Wallet and Expense Section */
+.wallet-expense-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #626262;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+/* Wallet Balance and Expense Cards */
+.wallet-balance,
+.expenses {
+  background-color: #9b9b9b;
+  border-radius: 15px;
+  padding: 5rem;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wallet-balance p,
+.expenses p {
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+.add-income-btn {
+  background: linear-gradient(90deg, #b5dc52 0%, #89e148 100%);
+}
+
+.add-expense-btn {
+  background: linear-gradient(90deg, #ff9595 0%, #ff4747 80%, #ff3838 100%);
+}
+
+.add-income-btn,
+.add-expense-btn {
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+/* Pie Chart Placeholder */
+.pie-chart {
+  width: 200px;
+  height: 200px;
+  background-color: #555555;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.transactions-expenses-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.transactions-container,
+.top-expenses-container {
+  border-radius: 15px;
+}
+
+.transactions-container {
+  flex: 2;
+}
+
+.top-expenses-container {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background-color: #efefef;
+  padding: 30px;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
