@@ -18,6 +18,9 @@ const App = () => {
   const [transactions, setTransactions] = useState([]);
   const [editingTransaction, setEditingTransaction] = useState(null);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const transactionsPerPage = 3;
+
   // Load initial data from localStorage
   useEffect(() => {
     const storedBalance = localStorage.getItem("walletBalance") || 5000;
@@ -29,6 +32,15 @@ const App = () => {
     setExpenses(Number(storedExpenses));
     setTransactions(storedTransactions);
   }, []);
+
+  const indexOfLastTransaction = currentPage * transactionsPerPage;
+  const indexOfFirstTransaction = indexOfLastTransaction - transactionsPerPage;
+  const currentTransactions = transactions.slice(
+    indexOfFirstTransaction,
+    indexOfLastTransaction
+  );
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -146,9 +158,13 @@ const App = () => {
       </div>
       <div className="transactions-expenses-section">
         <RecentTransactions
-          transactions={transactions}
+          transactions={currentTransactions}
           onDelete={deleteTransaction}
           onEdit={editTransaction}
+          transactionsPerPage={transactionsPerPage}
+          totalTransactions={transactions.length}
+          currentPage={currentPage}
+          paginate={paginate}
         />
         <TopExpenses transactions={transactions} />
       </div>

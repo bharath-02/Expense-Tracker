@@ -1,7 +1,24 @@
 import React from "react";
-import "./RecentTransactions.css"; // External CSS for transactions
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import "./RecentTransactions.css";
 
-const RecentTransactions = ({ transactions, onDelete, onEdit }) => {
+const RecentTransactions = ({
+  transactions,
+  onDelete,
+  onEdit,
+  transactionsPerPage,
+  totalTransactions,
+  currentPage,
+  paginate,
+}) => {
+  const pageNumbers = [];
+  for (
+    let i = 1;
+    i <= Math.ceil(totalTransactions / transactionsPerPage);
+    i++
+  ) {
+    pageNumbers.push(i);
+  }
   return (
     <div className="transactions-container">
       <h2 className="section-title">Recent Transactions</h2>
@@ -32,6 +49,40 @@ const RecentTransactions = ({ transactions, onDelete, onEdit }) => {
             </div>
           ))
         )}
+        <nav className="pagination-nav">
+          <ul className="pagination">
+            <li>
+              <button
+                onClick={() => paginate(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="arrow-btn"
+              >
+                <FaArrowLeft />
+              </button>
+            </li>
+            {pageNumbers.map((number) => (
+              <li
+                key={number}
+                className={`page-item ${
+                  currentPage === number ? "active" : ""
+                }`}
+              >
+                <button onClick={() => paginate(number)} className="page-link">
+                  {number}
+                </button>
+              </li>
+            ))}
+            <li>
+              <button
+                onClick={() => paginate(currentPage + 1)}
+                disabled={currentPage === pageNumbers.length}
+                className="arrow-btn"
+              >
+                <FaArrowRight />
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   );
