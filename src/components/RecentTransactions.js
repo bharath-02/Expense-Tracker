@@ -12,11 +12,7 @@ const RecentTransactions = ({
   paginate,
 }) => {
   const pageNumbers = [];
-  for (
-    let i = 1;
-    i <= Math.ceil(totalTransactions / transactionsPerPage);
-    i++
-  ) {
+  for (let i = 1; i <= Math.ceil(totalTransactions / transactionsPerPage); i++) {
     pageNumbers.push(i);
   }
   return (
